@@ -1,2 +1,7 @@
 server:
   port: 8081
+
+## actuator
+management:
+  endpoints:
+    web.exposure.include: "*"
