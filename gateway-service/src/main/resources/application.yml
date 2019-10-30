@@ -1,2 +1,13 @@
 server:
   port: 8082
+
+## gateway
+spring:
+  cloud.gateway.routes:
+    - id: api-service-route
+      uri: http://localhost:8080
+      predicates:
+        - Path=/api/**
+      filters:
+        - StripPrefix=1
+  security.oauth2.resourceserver.jwt.jwk-set-uri: 'http://localhost:8081/.well-known/jwks.json'
