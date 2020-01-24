@@ -43,3 +43,6 @@ curl -X GET \
   http://localhost:8082/api/hello \
   -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI0ODY3ODksInVzZXJfbmFtZSI6InVzZXItdXNlcm5hbWUiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6IjA3MDZmOWUyLWRlMWYtNDg4ZS1hNTJhLTUzMjdiMjU4ZTI4ZiIsImNsaWVudF9pZCI6InRlc3QtY2xpZW50Iiwic2NvcGUiOlsiZGVmYXVsdC1zY29wZSJdfQ.IqSmO7rH_lFpQ8__ZP1rwSDh5S6kw3EPaT3gs-byW_usN5iM0l0ohEV1OCb1jOUjcMoxnqUM-C3ZEND_tVdGlpscNVXT1avkVGw8Rc2Y49_Ee0OYgLwg97LOFdoHgCIEWKqronk5EdZJES1Zv95MbGSO1o6U_mo8My1-znxNgUwYpGt1sNUsaoCRzIKEQR--67IWe3EMmxo1D0IcPPi0fgKbVD2LR7mOQTqvQMHEF4LplS67mbfUWLFJg9Q4gyH0l3ndgGkCIcofPop9-GlwNCgp52RiGQlp8MCXydHbybr-_g-nXrstxSHQ-1iC0ihIMSueDhEuN7gLe5OELBW1oA'
 ```
+
+## 实现思路参考文章
+[Spring Cloud Gateway 基于 OAuth2.0 的身份认证](https://mp.weixin.qq.com/s/4v_wwX0SS7jvOwtO8uiDAw)
