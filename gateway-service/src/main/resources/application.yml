@@ -10,4 +10,10 @@ spring:
         - Path=/api/**
       filters:
         - StripPrefix=1
+    - id: auth-service-route
+      uri: http://localhost:8081
+      predicates:
+        - Path=/auth/**
+      filters:
+        - StripPrefix=1
   security.oauth2.resourceserver.jwt.jwk-set-uri: 'http://localhost:8081/.well-known/jwks.json'

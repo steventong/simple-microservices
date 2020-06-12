@@ -57,7 +57,6 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         return jwtAccessTokenConverter;
     }
 
-
     @Bean
     public KeyPair keyPair() {
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("demojwt.jks"), "keystorepass".toCharArray());

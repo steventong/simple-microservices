@@ -17,29 +17,45 @@ api-service 是业务服务，提供业务接口，没有 token 验证；通过 
 ### api-service
 - 提供简单的 Restful API，通过 gateway-service 调用
 
-
 ## 运行
 依次运行 auth-service，gateway-service，api-service
 
-获取 access token
+###### 获取 access token
 ```shell script
 curl -X POST \
   http://localhost:8081/oauth/token \
   -d grant_type=password \
   -d client_id=test-client \
   -d client_secret=test-secret \
-  -d username=user-username \
-  -d password=user-password
+  -d username=my-username \
+  -d password=my-password
+
+# 将接口返回的 access_token 赋值给 shell 变量，方便后续引用
+access_token_here=eyJhb...
 ```
 
-不带 token 访问接口，返回 401 Unauthorized
+###### 不带 token 访问接口，返回 401 Unauthorized
 ```shell script
 curl -X GET http://localhost:8082/api/hello -sI
 ```
 
-带 token 访问接口
+###### 带 token 访问接口
 ```shell script
 curl -X GET \
   http://localhost:8082/api/hello \
-  -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzI0ODY3ODksInVzZXJfbmFtZSI6InVzZXItdXNlcm5hbWUiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6IjA3MDZmOWUyLWRlMWYtNDg4ZS1hNTJhLTUzMjdiMjU4ZTI4ZiIsImNsaWVudF9pZCI6InRlc3QtY2xpZW50Iiwic2NvcGUiOlsiZGVmYXVsdC1zY29wZSJdfQ.IqSmO7rH_lFpQ8__ZP1rwSDh5S6kw3EPaT3gs-byW_usN5iM0l0ohEV1OCb1jOUjcMoxnqUM-C3ZEND_tVdGlpscNVXT1avkVGw8Rc2Y49_Ee0OYgLwg97LOFdoHgCIEWKqronk5EdZJES1Zv95MbGSO1o6U_mo8My1-znxNgUwYpGt1sNUsaoCRzIKEQR--67IWe3EMmxo1D0IcPPi0fgKbVD2LR7mOQTqvQMHEF4LplS67mbfUWLFJg9Q4gyH0l3ndgGkCIcofPop9-GlwNCgp52RiGQlp8MCXydHbybr-_g-nXrstxSHQ-1iC0ihIMSueDhEuN7gLe5OELBW1oA'
+  -H "Authorization: Bearer ${access_token_here}"
+```
+
+###### 查询用户详情
+```shell script
+# 直接访问 auth-service 接口
+curl -X GET \
+  http://localhost:8081/users/me \
+  -H "Authorization: Bearer ${access_token_here}"
+
+# 或者通过 gateway 访问 auth-service 接口
+curl -X GET \
+  http://localhost:8082/auth/users/me \
+  -H "Authorization: Bearer ${access_token_here}"
+
 ```
