@@ -59,3 +59,6 @@ curl -X GET \
   -H "Authorization: Bearer ${access_token_here}"
 
 ```
+
+## 实现步骤发表在我的公众号内
+[Spring Cloud Gateway 基于 OAuth2.0 的身份认证](https://mp.weixin.qq.com/s/4v_wwX0SS7jvOwtO8uiDAw)
